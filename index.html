@@ -7,7 +7,7 @@
     <style>
         /* --- TEMA VE DEĞİŞKENLER --- */
         :root {
-            --primary: #2E7D32; /* Köknar yeşili */
+            --primary: #2E7D32;
             --primary-hover: #1B5E20;
             --secondary: #FFB300;
             --danger: #D32F2F;
@@ -48,27 +48,26 @@
         /* --- GENEL SIFIRLAMA VE YAPI --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; user-select: none; }
         body { background-color: var(--bg-color); color: var(--text-main); height: 100vh; display: flex; overflow: hidden; touch-action: manipulation; }
-        
+
         /* --- YAN MENÜ (SIDEBAR) --- */
-        .sidebar { width: 250px; background-color: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px 0; z-index: 10; }
+        .sidebar { width: 230px; background-color: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px 0; z-index: 10; }
         .brand { text-align: center; padding: 0 20px 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-        .brand h1 { font-size: 24px; color: var(--primary); font-weight: bold; }
-        .brand p { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
-        .clock { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 20px; color: var(--text-main); }
-        .nav-btn { display: flex; align-items: center; padding: 15px 25px; cursor: pointer; font-size: 18px; color: var(--text-main); transition: 0.2s; border: none; background: none; width: 100%; text-align: left; }
+        .brand h1 { font-size: 20px; color: var(--primary); font-weight: 600; letter-spacing: 0.3px; }
+        .brand p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .clock { text-align: center; font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-main); }
+        .nav-btn { display: flex; align-items: center; padding: 14px 25px; cursor: pointer; font-size: 16px; color: var(--text-main); transition: 0.2s; border: none; background: none; width: 100%; text-align: left; }
         .nav-btn:hover, .nav-btn.active { background-color: var(--primary); color: white; }
-        .nav-btn span { margin-right: 15px; font-size: 24px; }
         .sidebar-bottom { margin-top: auto; padding: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
 
         /* --- ANA İÇERİK ALANI --- */
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         .view { display: none; height: 100%; width: 100%; padding: 20px; overflow-y: auto; }
         .view.active { display: block; }
-        
+
         /* --- BAŞLIKLAR VE BUTONLAR --- */
         .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
-        .page-header h2 { font-size: 28px; }
-        .btn { padding: 12px 24px; font-size: 16px; font-weight: bold; border: none; border-radius: var(--radius); cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow); }
+        .page-header h2 { font-size: 26px; font-weight: 600; }
+        .btn { padding: 12px 24px; font-size: 15px; font-weight: 600; border: none; border-radius: var(--radius); cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow); }
         .btn:active { transform: scale(0.98); }
         .btn-primary { background-color: var(--primary); color: white; }
         .btn-primary:hover { background-color: var(--primary-hover); }
@@ -76,16 +75,16 @@
         .btn-danger:hover { background-color: var(--danger-hover); }
         .btn-secondary { background-color: var(--text-muted); color: white; }
         .btn-success { background-color: var(--success); color: white; }
-        .btn-large { padding: 20px 40px; font-size: 20px; }
+        .btn-large { padding: 18px 40px; font-size: 18px; }
         input, select { padding: 12px; font-size: 16px; border: 1px solid var(--border); border-radius: var(--radius); background-color: var(--bg-color); color: var(--text-main); width: 100%; }
 
         /* --- MASALAR GÖRÜNÜMÜ --- */
         .tables-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
-        .table-card { background-color: var(--surface); border: 3px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; height: 160px; box-shadow: var(--shadow); }
+        .table-card { background-color: var(--surface); border: 3px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; height: 150px; box-shadow: var(--shadow); }
         .table-card:hover { transform: translateY(-5px); }
-        .table-card h3 { font-size: 24px; margin-bottom: 10px; }
-        .table-card .amount { font-size: 20px; font-weight: bold; }
-        .table-card .time { font-size: 14px; color: var(--text-muted); margin-top: 10px; }
+        .table-card h3 { font-size: 22px; margin-bottom: 10px; font-weight: 600; }
+        .table-card .amount { font-size: 19px; font-weight: 600; }
+        .table-card .time { font-size: 13px; color: var(--text-muted); margin-top: 10px; }
         .table-empty { background-color: var(--table-empty); border-color: var(--table-empty-border); }
         .table-empty .amount { display: none; }
         .table-full { background-color: var(--table-full); border-color: var(--table-full-border); }
@@ -95,52 +94,51 @@
         .pos-container { display: flex; height: calc(100vh - 100px); gap: 20px; }
         .pos-menu { flex: 2; display: flex; flex-direction: column; background-color: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
         .pos-categories { display: flex; overflow-x: auto; padding: 10px; border-bottom: 1px solid var(--border); gap: 10px; background-color: var(--bg-color); }
-        .cat-btn { padding: 15px 25px; border: none; border-radius: var(--radius); font-size: 16px; font-weight: bold; background-color: var(--surface); color: var(--text-main); cursor: pointer; white-space: nowrap; box-shadow: var(--shadow); }
+        .cat-btn { padding: 14px 24px; border: none; border-radius: var(--radius); font-size: 15px; font-weight: 600; background-color: var(--surface); color: var(--text-main); cursor: pointer; white-space: nowrap; box-shadow: var(--shadow); }
         .cat-btn.active { background-color: var(--primary); color: white; }
         .pos-products { flex: 1; overflow-y: auto; padding: 15px; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; align-content: flex-start; }
-        .prod-card { background-color: var(--bg-color); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; text-align: center; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; }
+        .prod-card { background-color: var(--bg-color); border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; text-align: center; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; justify-content: center; min-height: 90px; }
         .prod-card:active { transform: scale(0.95); background-color: var(--primary); color: white; }
-        .prod-card h4 { font-size: 16px; margin-bottom: 10px; pointer-events: none; }
-        .prod-card .price { font-size: 18px; font-weight: bold; pointer-events: none; color: var(--primary); }
-        .prod-card.low-stock { border-color: var(--danger); position: relative; }
-        .prod-card.low-stock::after { content: '!'; position: absolute; top: 5px; right: 5px; background: var(--danger); color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 14px; }
-        
+        .prod-card h4 { font-size: 15px; margin-bottom: 8px; pointer-events: none; font-weight: 600; }
+        .prod-card .price { font-size: 17px; font-weight: 600; pointer-events: none; color: var(--primary); }
+
         .pos-order { flex: 1; background-color: var(--surface); border-radius: var(--radius); display: flex; flex-direction: column; box-shadow: var(--shadow); overflow: hidden; min-width: 350px; }
-        .order-header { padding: 15px; background-color: var(--primary); color: white; font-size: 20px; font-weight: bold; text-align: center; }
+        .order-header { padding: 15px; background-color: var(--primary); color: white; font-size: 18px; font-weight: 600; text-align: center; }
         .order-list { flex: 1; overflow-y: auto; padding: 10px; }
-        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid var(--border); font-size: 18px; }
+        .order-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid var(--border); font-size: 17px; }
         .order-item-info { flex: 1; }
         .order-item-actions { display: flex; align-items: center; gap: 15px; }
-        .qty-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background-color: var(--bg-color); font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: var(--shadow); }
+        .qty-btn { width: 38px; height: 38px; border-radius: 50%; border: none; background-color: var(--bg-color); font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow); }
         .qty-btn.plus { background-color: var(--success); color: white; }
         .qty-btn.minus { background-color: var(--danger); color: white; }
         .order-footer { padding: 20px; border-top: 2px solid var(--border); background-color: var(--bg-color); }
-        .order-total { display: flex; justify-content: space-between; font-size: 28px; font-weight: bold; margin-bottom: 20px; }
+        .order-total { display: flex; justify-content: space-between; font-size: 26px; font-weight: 600; margin-bottom: 20px; }
         .order-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
         /* --- YÖNETİM VE RAPORLAR --- */
         .data-table { width: 100%; border-collapse: collapse; background-color: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); font-size: 16px; }
-        .data-table th { background-color: var(--bg-color); font-weight: bold; }
+        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); font-size: 15px; }
+        .data-table th { background-color: var(--bg-color); font-weight: 600; }
+        .table-actions { display: flex; gap: 8px; }
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; }
         .report-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .report-card { background-color: var(--surface); padding: 20px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow); border-left: 5px solid var(--primary); }
-        .report-card h4 { font-size: 16px; color: var(--text-muted); margin-bottom: 10px; }
-        .report-card .val { font-size: 32px; font-weight: bold; color: var(--text-main); }
+        .report-card h4 { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
+        .report-card .val { font-size: 30px; font-weight: 700; color: var(--text-main); }
 
         /* --- MODAL (POPUP) --- */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(3px); }
         .modal { background-color: var(--surface); padding: 30px; border-radius: var(--radius); width: 90%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .modal h3 { font-size: 24px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .modal h3 { font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid var(--border); padding-bottom: 10px; font-weight: 600; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
         .payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .payment-btn { padding: 20px; font-size: 20px; border: 2px solid var(--border); border-radius: var(--radius); background: var(--bg-color); cursor: pointer; font-weight: bold; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .payment-btn { padding: 20px; font-size: 18px; border: 2px solid var(--border); border-radius: var(--radius); background: var(--bg-color); cursor: pointer; font-weight: 600; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 8px; }
         .payment-btn:hover { border-color: var(--primary); background: var(--table-empty); }
-        
+
         /* --- TOAST BİLDİRİMLERİ --- */
         #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
-        .toast { min-width: 250px; padding: 15px 20px; border-radius: 8px; color: white; font-size: 16px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: slideIn 0.3s ease forwards; opacity: 0; }
+        .toast { min-width: 250px; padding: 15px 20px; border-radius: 8px; color: white; font-size: 15px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: slideIn 0.3s ease forwards; opacity: 0; }
         .toast.success { background-color: var(--success); }
         .toast.error { background-color: var(--danger); }
         .toast.warning { background-color: var(--secondary); color: black; }
@@ -149,78 +147,76 @@
 
         /* --- MOBİL UYUMLULUK --- */
         @media (max-width: 768px) {
-            body { 
-                display: block; 
-                height: auto; 
+            body {
+                display: block;
+                height: auto;
                 min-height: 100vh;
-                overflow: auto; 
+                overflow: auto;
             }
-            .sidebar { 
+            .sidebar {
                 position: fixed;
                 bottom: 0;
                 left: 0;
-                width: 100%; 
-                flex-direction: row; 
-                padding: 5px;
+                width: 100%;
+                flex-direction: row;
+                padding: 0;
                 border-right: none;
                 border-top: 1px solid var(--border);
                 justify-content: space-around;
                 overflow-x: auto;
                 background: var(--surface);
                 z-index: 1000;
-                box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
             }
             .brand, .clock, .sidebar-bottom { display: none; }
-            .nav-btn { 
-                padding: 5px; 
-                flex-direction: column; 
-                align-items: center; 
-                font-size: 11px; 
+            .nav-btn {
+                padding: 16px 6px;
+                font-size: 14px;
                 text-align: center;
                 white-space: nowrap;
                 justify-content: center;
                 flex: 1;
-                min-width: 65px;
+                min-width: 70px;
+                border-radius: 0;
             }
-            .nav-btn span { margin-right: 0; margin-bottom: 3px; font-size: 20px; }
-            
-            .main-content { 
-                display: block; 
-                height: auto; 
-                overflow: visible; 
-                padding-bottom: 80px;
+
+            .main-content {
+                display: block;
+                height: auto;
+                overflow: visible;
+                padding-bottom: 76px;
             }
             .view {
                 height: auto;
                 overflow: visible;
             }
-            
+
             .page-header { flex-direction: column; align-items: stretch; gap: 10px; text-align: center; }
-            .page-header h2 { font-size: 22px; }
+            .page-header h2 { font-size: 20px; }
             .page-header div { display: flex; flex-direction: column; gap: 10px; }
             .page-header .btn { width: 100%; justify-content: center; }
 
             .pos-container { flex-direction: column; height: auto; gap: 15px; }
-            .pos-menu { min-height: 400px; flex: none; }
-            .pos-order { min-height: 450px; flex: none; min-width: 100%; }
+            .pos-menu { min-height: 380px; flex: none; }
+            .pos-order { min-height: 420px; flex: none; min-width: 100%; }
             .pos-products { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-            
+
             .tables-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-            .table-card { height: 130px; padding: 15px; }
-            .table-card h3 { font-size: 18px; }
-            .table-card .amount { font-size: 16px; }
+            .table-card { height: 120px; padding: 15px; }
+            .table-card h3 { font-size: 16px; }
+            .table-card .amount { font-size: 15px; }
 
             .data-table { display: block; overflow-x: auto; white-space: nowrap; }
-            
+
             .report-cards { grid-template-columns: 1fr; }
-            
+
             .modal { width: 95%; padding: 20px; }
             .payment-options { grid-template-columns: 1fr; }
             .order-buttons { grid-template-columns: 1fr; }
-            .order-total { font-size: 20px; }
-            .btn-large { padding: 15px; font-size: 16px; }
-            
-            #toast-container { right: 10px; left: 10px; bottom: 80px; align-items: center; }
+            .order-total { font-size: 19px; }
+            .btn-large { padding: 14px; font-size: 15px; }
+
+            #toast-container { right: 10px; left: 10px; bottom: 82px; align-items: center; }
             .toast { width: 100%; min-width: unset; text-align: center; }
         }
 
@@ -240,31 +236,30 @@
 
     <div class="sidebar">
         <div class="brand">
-            <h1>🌲 Köknar Fırın</h1>
+            <h1>Köknar Fırın</h1>
             <p>Adisyon Sistemi v1.0</p>
         </div>
         <div class="clock" id="live-clock">00:00:00</div>
-        
-        <button class="nav-btn active" onclick="switchView('tables')"><span>🪑</span> Masalar</button>
-        <button class="nav-btn" onclick="switchView('menu')"><span>🍔</span> Menü Yönetimi</button>
-        <button class="nav-btn" onclick="switchView('stock')"><span>📦</span> Stok Takibi</button>
-        <button class="nav-btn" onclick="switchView('reports')"><span>📊</span> Gün Sonu</button>
-        <button class="nav-btn" onclick="switchView('network')"><span>🌐</span> Bağlantı</button>
-        <button class="nav-btn" onclick="switchView('settings')"><span>⚙️</span> Ayarlar</button>
+
+        <button class="nav-btn active" onclick="switchView('tables')">Masalar</button>
+        <button class="nav-btn" onclick="switchView('menu')">Yönetim</button>
+        <button class="nav-btn" onclick="switchView('reports')">Gün Sonu</button>
+        <button class="nav-btn" onclick="switchView('network')">Bağlantı</button>
+        <button class="nav-btn" onclick="switchView('settings')">Ayarlar</button>
 
         <div class="sidebar-bottom">
-            <button class="btn btn-secondary" onclick="toggleTheme()">🌗 Tema Değiştir</button>
-            <button class="btn btn-secondary" onclick="toggleFullScreen()">🖥️ Tam Ekran</button>
+            <button class="btn btn-secondary" onclick="toggleTheme()">Tema Değiştir</button>
+            <button class="btn btn-secondary" onclick="toggleFullScreen()">Tam Ekran</button>
         </div>
     </div>
 
     <div class="main-content">
-        
+
         <div id="view-tables" class="view active">
             <div class="page-header">
                 <h2>Salon Yönetimi</h2>
                 <div>
-                    <button class="btn btn-success" onclick="openModal('modal-add-table')">➕ Masa Ekle</button>
+                    <button class="btn btn-success" onclick="openModal('modal-add-table')">Masa Ekle</button>
                 </div>
             </div>
             <div class="tables-grid" id="tables-container">
@@ -274,7 +269,7 @@
         <div id="view-pos" class="view">
             <div class="page-header">
                 <h2 id="pos-table-name">Masa Adı</h2>
-                <button class="btn btn-danger" onclick="switchView('tables')">⬅️ Geri Dön</button>
+                <button class="btn btn-danger" onclick="switchView('tables')">Geri Dön</button>
             </div>
             <div class="pos-container">
                 <div class="pos-menu">
@@ -294,7 +289,7 @@
                         </div>
                         <div class="order-buttons">
                             <button class="btn btn-danger btn-large" onclick="cancelOrder()">İptal Et</button>
-                            <button class="btn btn-success btn-large" onclick="openPaymentModal()">💳 Ödeme Al</button>
+                            <button class="btn btn-success btn-large" onclick="openPaymentModal()">Ödeme Al</button>
                         </div>
                     </div>
                 </div>
@@ -305,8 +300,8 @@
             <div class="page-header">
                 <h2>Menü ve Ürün Yönetimi</h2>
                 <div>
-                    <button class="btn btn-secondary" onclick="openModal('modal-add-category')">📂 Kategori Ekle</button>
-                    <button class="btn btn-success" onclick="openModal('modal-add-product')">➕ Ürün Ekle</button>
+                    <button class="btn btn-secondary" onclick="openModal('modal-add-category')">Kategori Ekle</button>
+                    <button class="btn btn-success" onclick="openAddProductModal()">Ürün Ekle</button>
                 </div>
             </div>
             <table class="data-table">
@@ -315,7 +310,6 @@
                         <th>Ürün Adı</th>
                         <th>Kategori</th>
                         <th>Fiyat</th>
-                        <th>Stok</th>
                         <th>İşlem</th>
                     </tr>
                 </thead>
@@ -324,30 +318,11 @@
             </table>
         </div>
 
-        <div id="view-stock" class="view">
-            <div class="page-header">
-                <h2>Stok Takibi</h2>
-            </div>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Ürün Adı</th>
-                        <th>Mevcut Stok</th>
-                        <th>Kritik Seviye</th>
-                        <th>Durum</th>
-                        <th>İşlem</th>
-                    </tr>
-                </thead>
-                <tbody id="stock-table-body">
-                    </tbody>
-            </table>
-        </div>
-
         <div id="view-reports" class="view">
             <div id="print-area">
                 <div class="page-header">
                     <h2>Gün Sonu Raporu</h2>
-                    <button class="btn btn-primary" onclick="window.print()">🖨️ PDF / Yazdır</button>
+                    <button class="btn btn-primary" onclick="window.print()">PDF / Yazdır</button>
                 </div>
                 <div class="report-cards" id="report-cards">
                     </div>
@@ -375,9 +350,9 @@
                 <div style="text-align: center; margin-bottom: 20px;">
                     <h3 id="network-status" style="color: var(--text-muted);">Durum: Çevrimdışı (Yerel Mod)</h3>
                 </div>
-                
+
                 <div class="form-group" style="background: var(--table-empty); padding: 20px; border-radius: var(--radius); border: 2px solid var(--table-empty-border);">
-                    <h3>💻 Ana Makine (Kasa) Ol</h3>
+                    <h3>Ana Makine (Kasa) Ol</h3>
                     <p style="color: var(--text-muted); margin: 10px 0;">Bu bilgisayarı kasa olarak belirle ve diğer cihazların bağlanmasına izin ver.</p>
                     <button class="btn btn-success" onclick="startHost()" id="btn-start-host" style="width: 100%;">Kasayı Başlat</button>
                     <div id="host-info" style="display: none; margin-top: 15px; text-align: center;">
@@ -390,7 +365,7 @@
                 <hr style="border:1px solid var(--border); margin: 30px 0;">
 
                 <div class="form-group" style="background: var(--table-reserved); padding: 20px; border-radius: var(--radius); border: 2px solid var(--table-reserved-border);">
-                    <h3>📱 Garson Olarak Bağlan</h3>
+                    <h3>Garson Olarak Bağlan</h3>
                     <p style="color: var(--text-muted); margin: 10px 0;">Kasa ekranında yazan kodu girerek sisteme bağlanın.</p>
                     <input type="text" id="join-host-id" placeholder="Örn: KOKNAR-1234" style="margin-bottom: 15px; text-align: center; font-size: 20px; letter-spacing: 2px; text-transform: uppercase;">
                     <button class="btn btn-secondary" onclick="joinAsClient()" id="btn-join" style="width: 100%;">Bağlan</button>
@@ -404,22 +379,22 @@
             </div>
             <div style="max-width: 600px; background: var(--surface); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow);">
                 <div class="form-group">
-                    <h3>💾 Veri Yedekleme</h3>
+                    <h3>Veri Yedekleme</h3>
                     <p style="color: var(--text-muted); margin: 10px 0;">Sistem verilerini bilgisayarınıza güvenle kaydedin.</p>
-                    <button class="btn btn-primary" onclick="exportData()">⬇️ JSON Olarak İndir (Yedek Al)</button>
+                    <button class="btn btn-primary" onclick="exportData()">JSON Olarak İndir (Yedek Al)</button>
                 </div>
                 <hr style="border:1px solid var(--border); margin: 30px 0;">
                 <div class="form-group">
-                    <h3>📂 Veri Geri Yükleme</h3>
+                    <h3>Veri Geri Yükleme</h3>
                     <p style="color: var(--text-muted); margin: 10px 0;">Daha önce aldığınız yedeği sisteme yükleyin.</p>
                     <input type="file" id="import-file" accept=".json" style="margin-bottom: 10px;">
-                    <button class="btn btn-success" onclick="importData()">⬆️ Yedeği Yükle</button>
+                    <button class="btn btn-success" onclick="importData()">Yedeği Yükle</button>
                 </div>
                 <hr style="border:1px solid var(--border); margin: 30px 0;">
                 <div class="form-group">
-                    <h3 style="color: var(--danger);">⚠️ Sistemi Sıfırla</h3>
+                    <h3 style="color: var(--danger);">Sistemi Sıfırla</h3>
                     <p style="color: var(--text-muted); margin: 10px 0;">Tüm menü, masa ve satış geçmişi silinir. Bu işlem geri alınamaz!</p>
-                    <button class="btn btn-danger" onclick="factoryReset()">🗑️ Tüm Verileri Sil</button>
+                    <button class="btn btn-danger" onclick="factoryReset()">Tüm Verileri Sil</button>
                 </div>
             </div>
         </div>
@@ -456,14 +431,6 @@
                 <label>Fiyat (₺)</label>
                 <input type="number" id="prod-price" min="0" step="0.5">
             </div>
-            <div class="form-group">
-                <label>Başlangıç Stoku</label>
-                <input type="number" id="prod-stock" min="0" value="100">
-            </div>
-            <div class="form-group">
-                <label>Kritik Stok Uyarısı</label>
-                <input type="number" id="prod-critical" min="0" value="10">
-            </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeModal('modal-add-product')">İptal</button>
                 <button class="btn btn-primary" onclick="saveProduct()">Kaydet</button>
@@ -488,28 +455,24 @@
     <div class="modal-overlay" id="modal-payment">
         <div class="modal" style="max-width: 600px;">
             <h3>Hesap Kapatma (Ürün Seçerek)</h3>
-            
+
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <span id="payment-table-total" style="color: var(--text-muted); font-weight: bold;">Masa Toplamı: 0.00 ₺</span>
+                <span id="payment-table-total" style="color: var(--text-muted); font-weight: 600;">Masa Toplamı: 0.00 ₺</span>
                 <button class="btn btn-secondary" style="padding: 8px 12px; font-size: 14px;" onclick="selectAllForPayment()">Hepsini Seç</button>
             </div>
-            
+
             <div id="payment-items-list" style="max-height: 250px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 20px;">
             </div>
 
             <div style="text-align: center; margin-bottom: 20px;">
                 <p style="font-size: 18px; color: var(--text-muted);">Şu An Ödenecek Tutar</p>
-                <p style="font-size: 36px; font-weight: bold; color: var(--primary);" id="payment-total-amount">0.00 ₺</p>
+                <p style="font-size: 36px; font-weight: 700; color: var(--primary);" id="payment-total-amount">0.00 ₺</p>
             </div>
-            
-            <p style="text-align: center; font-weight: bold; margin-bottom: 10px;">Ödeme Yöntemi</p>
+
+            <p style="text-align: center; font-weight: 600; margin-bottom: 10px;">Ödeme Yöntemi</p>
             <div class="payment-options">
-                <button class="payment-btn" onclick="processPayment('Nakit')">
-                    <span style="font-size: 30px;">💵</span> Nakit
-                </button>
-                <button class="payment-btn" onclick="processPayment('Kart')">
-                    <span style="font-size: 30px;">💳</span> Kredi Kartı
-                </button>
+                <button class="payment-btn" onclick="processPayment('Nakit')">Nakit</button>
+                <button class="payment-btn" onclick="processPayment('Kart')">Kredi Kartı</button>
             </div>
             <div class="modal-footer" style="margin-top: 15px; justify-content: center;">
                 <button class="btn btn-secondary" onclick="closeModal('modal-payment')" style="width: 100%;">Vazgeç</button>
@@ -526,8 +489,8 @@
         let peer = null;
         let isHost = false;
         let isClient = false;
-        let hostConnection = null; 
-        let clientConnections = []; 
+        let hostConnection = null;
+        let clientConnections = [];
         let isProcessingClientAction = false;
 
         const generateId = () => 'KOKNAR-' + Math.floor(1000 + Math.random() * 9000);
@@ -535,7 +498,7 @@
         const startHost = () => {
             const hostId = generateId();
             peer = new Peer(hostId);
-            
+
             peer.on('open', (id) => {
                 isHost = true;
                 isClient = false;
@@ -551,9 +514,9 @@
             peer.on('connection', (conn) => {
                 clientConnections.push(conn);
                 document.getElementById('host-clients-count').innerText = `Bağlı Garson: ${clientConnections.length}`;
-                
+
                 conn.on('open', () => {
-                    conn.send({ type: 'sync', tables: db.tables, products: db.products });
+                    conn.send({ type: 'sync', tables: db.tables, products: db.products, categories: db.categories });
                 });
 
                 conn.on('data', (data) => {
@@ -582,7 +545,7 @@
 
             peer.on('open', () => {
                 hostConnection = peer.connect(hostId, { reliable: true });
-                
+
                 hostConnection.on('open', () => {
                     isClient = true;
                     isHost = false;
@@ -592,13 +555,14 @@
                     document.getElementById('btn-join').className = 'btn btn-success';
                     document.getElementById('btn-start-host').disabled = true;
                     showToast('Kasaya başarıyla bağlanıldı!', 'success');
-                    switchView('tables'); 
+                    switchView('tables');
                 });
 
                 hostConnection.on('data', (data) => {
                     if (data.type === 'sync') {
-                        db.tables = data.tables; 
+                        db.tables = data.tables;
                         db.products = data.products;
+                        db.categories = data.categories;
                         if (document.getElementById('view-tables').classList.contains('active')) renderTables();
                         if (document.getElementById('view-pos').classList.contains('active')) renderPOSOrders();
                     }
@@ -625,7 +589,7 @@
             activeTableId = data.tableId;
 
             if (data.action === 'addToOrder') {
-                addToOrder(data.productId, true); 
+                addToOrder(data.productId, true);
             } else if (data.action === 'updateOrderQty') {
                 updateOrderQty(data.productId, data.delta, true);
             } else if (data.action === 'cancelOrder') {
@@ -634,17 +598,17 @@
                 currentPaymentBasket = data.basket;
                 processPayment(data.method, true);
             }
-            
+
             activeTableId = originalTableId;
             isProcessingClientAction = false;
-            
+
             if (document.getElementById('view-tables').classList.contains('active')) renderTables();
             if (document.getElementById('view-pos').classList.contains('active')) renderPOSOrders();
         };
 
         const broadcastSync = () => {
             if (isHost && clientConnections.length > 0) {
-                const payload = { type: 'sync', tables: db.tables, products: db.products };
+                const payload = { type: 'sync', tables: db.tables, products: db.products, categories: db.categories };
                 clientConnections.forEach(conn => {
                     if (conn.open) {
                         try { conn.send(payload); } catch(e) {}
@@ -664,7 +628,7 @@
             tables: [],
             categories: [],
             products: [],
-            history: [], // Gün sonu raporları için
+            history: [],
             settings: { theme: 'light' }
         };
 
@@ -679,15 +643,15 @@
             ];
 
             const sampleProducts = [
-                ['Çay', 'c1', 15, 500], ['Filtre Kahve', 'c1', 45, 100], ['Türk Kahvesi', 'c1', 40, 150], ['Latte', 'c1', 55, 100],
-                ['Limonata', 'c2', 40, 50], ['Su', 'c2', 10, 300], ['Ayran', 'c2', 20, 200], ['Buzlu Kahve', 'c2', 60, 80],
-                ['Peynirli Poğaça', 'c3', 20, 40], ['Zeytinli Açma', 'c3', 25, 30], ['Simit', 'c3', 15, 100], ['Kruvasan', 'c3', 45, 20],
-                ['Sütlaç', 'c4', 50, 20], ['Cheesecake', 'c4', 75, 15], ['Tiramisu', 'c4', 80, 15], ['Profiterol', 'c4', 70, 20],
-                ['Serpme Kahvaltı', 'c5', 250, 30], ['Menemen', 'c5', 80, 50], ['Sahanda Yumurta', 'c5', 60, 50], ['Tost', 'c5', 70, 60]
+                ['Çay', 'c1', 15], ['Filtre Kahve', 'c1', 45], ['Türk Kahvesi', 'c1', 40], ['Latte', 'c1', 55],
+                ['Limonata', 'c2', 40], ['Su', 'c2', 10], ['Ayran', 'c2', 20], ['Buzlu Kahve', 'c2', 60],
+                ['Peynirli Poğaça', 'c3', 20], ['Zeytinli Açma', 'c3', 25], ['Simit', 'c3', 15], ['Kruvasan', 'c3', 45],
+                ['Sütlaç', 'c4', 50], ['Cheesecake', 'c4', 75], ['Tiramisu', 'c4', 80], ['Profiterol', 'c4', 70],
+                ['Serpme Kahvaltı', 'c5', 250], ['Menemen', 'c5', 80], ['Sahanda Yumurta', 'c5', 60], ['Tost', 'c5', 70]
             ];
 
             db.products = sampleProducts.map((p, i) => ({
-                id: 'p' + i, name: p[0], categoryId: p[1], price: p[2], stock: p[3], critical: 10
+                id: 'p' + i, name: p[0], categoryId: p[1], price: p[2]
             }));
 
             for (let i = 1; i <= 10; i++) {
@@ -699,7 +663,7 @@
             const data = localStorage.getItem(STORAGE_KEY);
             if (data) {
                 db = JSON.parse(data);
-                if(!db.history) db.history = []; // Eski sürümleri korumak için
+                if(!db.history) db.history = [];
             } else {
                 seedData();
                 saveData();
@@ -748,7 +712,6 @@
         const openModal = (id) => document.getElementById(id).style.display = 'flex';
         const closeModal = (id) => {
             document.getElementById(id).style.display = 'none';
-            // Formları temizle
             const inputs = document.getElementById(id).querySelectorAll('input');
             inputs.forEach(i => i.type !== 'hidden' && i.type !== 'button' && i.type !== 'submit' ? i.value = '' : null);
         };
@@ -756,16 +719,15 @@
         const switchView = (viewName) => {
             document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            
+
             if(viewName !== 'pos') {
                 event?.currentTarget?.classList.add('active');
             }
-            
+
             document.getElementById('view-' + viewName).classList.add('active');
 
             if (viewName === 'tables') renderTables();
             if (viewName === 'menu') renderMenuAdmin();
-            if (viewName === 'stock') renderStockAdmin();
             if (viewName === 'reports') renderReports();
         };
 
@@ -783,16 +745,15 @@
             if (isProcessingClientAction) return;
             const container = document.getElementById('tables-container');
             container.innerHTML = '';
-            
+
             db.tables.forEach(table => {
                 const total = calculateTableTotal(table);
-                // Durum kontrolü
                 if(table.orders.length > 0 && table.status === 'empty') table.status = 'full';
                 if(table.orders.length === 0 && table.status === 'full') table.status = 'empty';
 
                 let timeStr = 'Boş';
                 if (table.openedAt && table.status === 'full') {
-                    const diff = Math.floor((new Date() - new Date(table.openedAt)) / 60000); // dakika
+                    const diff = Math.floor((new Date() - new Date(table.openedAt)) / 60000);
                     timeStr = diff > 60 ? Math.floor(diff/60) + ' sa ' + (diff%60) + ' dk' : diff + ' dk önce açıldı';
                 }
 
@@ -824,10 +785,10 @@
             activeTableId = tableId;
             const table = db.tables.find(t => t.id === tableId);
             if (!table.openedAt && table.orders.length === 0) table.openedAt = new Date().toISOString();
-            
+
             document.getElementById('pos-table-name').innerText = table.name;
             activeCategoryId = db.categories.length > 0 ? db.categories[0].id : null;
-            
+
             switchView('pos');
             renderPOSCategories();
             renderPOSProducts();
@@ -854,16 +815,14 @@
             const container = document.getElementById('pos-products');
             container.innerHTML = '';
             const filtered = db.products.filter(p => p.categoryId === activeCategoryId);
-            
+
             filtered.forEach(prod => {
-                const isLow = prod.stock <= prod.critical;
                 const card = document.createElement('div');
-                card.className = `prod-card ${isLow ? 'low-stock' : ''}`;
+                card.className = 'prod-card';
                 card.onclick = () => addToOrder(prod.id);
                 card.innerHTML = `
                     <h4>${prod.name}</h4>
                     <div class="price">${formatMoney(prod.price)}</div>
-                    <div style="font-size:12px; color:var(--text-muted); margin-top:5px;">Stok: ${prod.stock}</div>
                 `;
                 container.appendChild(card);
             });
@@ -876,20 +835,12 @@
             }
             const table = db.tables.find(t => t.id === activeTableId);
             if (!table.openedAt && table.orders.length === 0) table.openedAt = new Date().toISOString();
-            const prod = db.products.find(p => p.id === productId);
-            
-            if(prod.stock <= 0) return showToast('Stok yetersiz!', 'error');
 
             const existing = table.orders.find(o => o.productId === productId);
             if (existing) {
                 existing.qty++;
             } else {
                 table.orders.push({ productId, qty: 1 });
-            }
-            
-            // Stok uyarısı sadece görünürde verilir, ödeme alındığında stok düşer.
-            if(prod.stock - (existing ? existing.qty : 1) <= prod.critical) {
-                showToast(`Kritik Stok: ${prod.name}`, 'warning');
             }
 
             saveData();
@@ -916,7 +867,7 @@
             const table = db.tables.find(t => t.id === activeTableId);
             const container = document.getElementById('pos-order-list');
             container.innerHTML = '';
-            
+
             if (table.orders.length === 0) {
                 container.innerHTML = '<div style="padding:20px; text-align:center; color:var(--text-muted);">Sipariş bulunmuyor.</div>';
                 document.getElementById('pos-total-amount').innerText = '0.00 ₺';
@@ -927,7 +878,7 @@
             table.orders.forEach(order => {
                 const prod = db.products.find(p => p.id === order.productId);
                 if (!prod) return;
-                
+
                 const lineTotal = prod.price * order.qty;
                 total += lineTotal;
 
@@ -935,12 +886,12 @@
                 item.className = 'order-item';
                 item.innerHTML = `
                     <div class="order-item-info">
-                        <div style="font-weight:bold;">${prod.name}</div>
+                        <div style="font-weight:600;">${prod.name}</div>
                         <div style="font-size:14px; color:var(--text-muted);">${formatMoney(prod.price)} x ${order.qty} = ${formatMoney(lineTotal)}</div>
                     </div>
                     <div class="order-item-actions">
                         <button class="qty-btn minus" onclick="updateOrderQty('${prod.id}', -1)">-</button>
-                        <span style="font-size:20px; font-weight:bold; width:30px; text-align:center;">${order.qty}</span>
+                        <span style="font-size:19px; font-weight:600; width:30px; text-align:center;">${order.qty}</span>
                         <button class="qty-btn plus" onclick="updateOrderQty('${prod.id}', 1)">+</button>
                     </div>
                 `;
@@ -967,36 +918,35 @@
         };
 
         /* =========================================================================
-           ÖDEME VE STOK İŞLEMLERİ (ÜRÜN BAZLI YENİ SİSTEM)
+           ÖDEME İŞLEMLERİ (ÜRÜN BAZLI SİSTEM)
            ========================================================================= */
         let currentPaymentBasket = {}; // O an ödenmek için seçilen ürünler
 
         const openPaymentModal = () => {
             const table = db.tables.find(t => t.id === activeTableId);
             if (table.orders.length === 0) return showToast('Ödenecek hesap yok!', 'error');
-            
-            currentPaymentBasket = {}; // Her açılışta sepeti sıfırla
+
+            currentPaymentBasket = {};
             table.orders.forEach(o => {
-                currentPaymentBasket[o.productId] = 0; // Başlangıçta ödenmek üzere seçili ürün 0
+                currentPaymentBasket[o.productId] = 0;
             });
-            
+
             renderPaymentItems();
             openModal('modal-payment');
         };
 
-        // Masadaki ürünleri modal içine yazdırır
         const renderPaymentItems = () => {
             const table = db.tables.find(t => t.id === activeTableId);
             const container = document.getElementById('payment-items-list');
             container.innerHTML = '';
-            
+
             let totalToPay = 0;
             let tableTotal = calculateTableTotal(table);
 
             table.orders.forEach(order => {
                 const prod = db.products.find(p => p.id === order.productId);
                 if (!prod) return;
-                
+
                 const payQty = currentPaymentBasket[prod.id] || 0;
                 totalToPay += payQty * prod.price;
 
@@ -1005,12 +955,12 @@
                 itemDiv.style.padding = '10px 5px';
                 itemDiv.innerHTML = `
                     <div class="order-item-info">
-                        <div style="font-weight:bold;">${prod.name} <span style="font-size:12px; color:var(--danger);">(Masada: ${order.qty} adet)</span></div>
+                        <div style="font-weight:600;">${prod.name} <span style="font-size:12px; color:var(--danger);">(Masada: ${order.qty} adet)</span></div>
                         <div style="font-size:14px; color:var(--text-muted);">${formatMoney(prod.price)}</div>
                     </div>
                     <div class="order-item-actions">
                         <button class="qty-btn minus" onclick="updatePaymentQty('${prod.id}', -1, ${order.qty})">-</button>
-                        <span style="font-size:20px; font-weight:bold; width:30px; text-align:center;">${payQty}</span>
+                        <span style="font-size:19px; font-weight:600; width:30px; text-align:center;">${payQty}</span>
                         <button class="qty-btn plus" onclick="updatePaymentQty('${prod.id}', 1, ${order.qty})">+</button>
                     </div>
                 `;
@@ -1021,18 +971,15 @@
             document.getElementById('payment-table-total').innerText = 'Masa Toplamı: ' + formatMoney(tableTotal);
         };
 
-        // Ödenecek ürün adedini artırır/azaltır
         const updatePaymentQty = (productId, delta, maxQty) => {
             let current = currentPaymentBasket[productId] || 0;
             let next = current + delta;
-            // Sıfırdan küçük olamaz ve masadaki adetten fazla ödenemez
             if (next >= 0 && next <= maxQty) {
                 currentPaymentBasket[productId] = next;
                 renderPaymentItems();
             }
         };
 
-        // Tüm ürünleri tek tuşla ödemeye ekler
         const selectAllForPayment = () => {
             const table = db.tables.find(t => t.id === activeTableId);
             table.orders.forEach(o => {
@@ -1041,7 +988,6 @@
             renderPaymentItems();
         };
 
-        // Ödemeyi tahsil edip masadan düşen ana fonksiyon
         const processPayment = (method, isLocalRun = false) => {
             if (isClient && hostConnection && hostConnection.open && !isLocalRun) {
                 hostConnection.send({ type: 'action', action: 'processPayment', tableId: activeTableId, method: method, basket: currentPaymentBasket });
@@ -1051,12 +997,11 @@
                 return;
             }
             const table = db.tables.find(t => t.id === activeTableId);
-            
+
             let payAmount = 0;
             let itemsPaid = [];
             let hasPayment = false;
 
-            // Ödenmek üzere seçilmiş ürün var mı kontrol et
             for (const [pId, qty] of Object.entries(currentPaymentBasket)) {
                 if (qty > 0) {
                     hasPayment = true;
@@ -1078,18 +1023,12 @@
                 items: itemsPaid
             });
 
-            // 2. Masadan ürünleri eksilt ve Stokları düş
+            // 2. Masadan ürünleri eksilt
             for (const [pId, qtyToPay] of Object.entries(currentPaymentBasket)) {
                 if (qtyToPay > 0) {
-                    // Stoktan düş
-                    const p = db.products.find(prod => prod.id === pId);
-                    if(p) p.stock = Math.max(0, p.stock - qtyToPay);
-
-                    // Masadaki siparişten düş
                     const orderIndex = table.orders.findIndex(o => o.productId === pId);
                     if (orderIndex > -1) {
                         table.orders[orderIndex].qty -= qtyToPay;
-                        // Ürün masada bittiyse tamamen sil
                         if (table.orders[orderIndex].qty <= 0) {
                             table.orders.splice(orderIndex, 1);
                         }
@@ -1105,7 +1044,7 @@
                 switchView('tables');
             } else {
                 showToast(`Seçilen ürünler ödendi. Masada kalan ürünler var.`);
-                renderPOSOrders(); // Kalanları ekranda göstermek için adisyonu güncelle
+                renderPOSOrders();
             }
 
             saveData();
@@ -1113,12 +1052,12 @@
         };
 
         /* =========================================================================
-           MENÜ VE STOK YÖNETİMİ
+           MENÜ YÖNETİMİ (ÜRÜN EKLEME / DÜZENLEME / SİLME)
            ========================================================================= */
         const renderMenuAdmin = () => {
             const tbody = document.getElementById('menu-table-body');
             tbody.innerHTML = '';
-            
+
             // Kategori Select Doldurma
             const catSelect = document.getElementById('prod-category');
             catSelect.innerHTML = '';
@@ -1133,44 +1072,15 @@
                         <td><strong>${p.name}</strong></td>
                         <td>${cat ? cat.name : '-'}</td>
                         <td>${formatMoney(p.price)}</td>
-                        <td>${p.stock}</td>
                         <td>
-                            <button class="btn btn-danger" style="padding: 8px 12px; font-size:14px;" onclick="deleteProduct('${p.id}')">Sil</button>
+                            <div class="table-actions">
+                                <button class="btn btn-primary" style="padding: 8px 12px; font-size:14px;" onclick="openEditProductModal('${p.id}')">Düzenle</button>
+                                <button class="btn btn-danger" style="padding: 8px 12px; font-size:14px;" onclick="deleteProduct('${p.id}')">Sil</button>
+                            </div>
                         </td>
                     </tr>
                 `;
             });
-        };
-
-        const renderStockAdmin = () => {
-            const tbody = document.getElementById('stock-table-body');
-            tbody.innerHTML = '';
-            db.products.forEach(p => {
-                const isCrit = p.stock <= p.critical;
-                tbody.innerHTML += `
-                    <tr>
-                        <td><strong>${p.name}</strong></td>
-                        <td style="font-size:20px; font-weight:bold; color:${isCrit ? 'var(--danger)' : 'var(--success)'}">${p.stock}</td>
-                        <td>${p.critical}</td>
-                        <td>${isCrit ? '⚠️ Kritik' : '✅ Yeterli'}</td>
-                        <td>
-                            <button class="btn btn-primary" style="padding: 8px 12px; font-size:14px;" onclick="addStockPrompt('${p.id}')">+ Stok Ekle</button>
-                        </td>
-                    </tr>
-                `;
-            });
-        };
-
-        const addStockPrompt = (id) => {
-            if (isClient) return showToast('Stok ekleme sadece Kasa üzerinden yapılabilir!', 'error');
-            const amt = prompt('Kaç adet stok eklemek istiyorsunuz?');
-            if(amt && !isNaN(amt)) {
-                const p = db.products.find(prod => prod.id === id);
-                p.stock += parseInt(amt);
-                saveData();
-                renderStockAdmin();
-                showToast('Stok güncellendi');
-            }
         };
 
         const addCategory = () => {
@@ -1184,25 +1094,58 @@
             showToast('Kategori eklendi');
         };
 
+        const openAddProductModal = () => {
+            document.getElementById('product-modal-title').innerText = 'Yeni Ürün Ekle';
+            document.getElementById('prod-id').value = '';
+            document.getElementById('prod-name').value = '';
+            document.getElementById('prod-price').value = '';
+            renderMenuAdmin(); // kategori select'ini güncel tutmak için
+            openModal('modal-add-product');
+        };
+
+        const openEditProductModal = (id) => {
+            if (isClient) return showToast('Bu işlem sadece Kasa üzerinden yapılabilir!', 'error');
+            const prod = db.products.find(p => p.id === id);
+            if (!prod) return;
+
+            document.getElementById('product-modal-title').innerText = 'Ürünü Düzenle';
+            document.getElementById('prod-id').value = prod.id;
+            document.getElementById('prod-name').value = prod.name;
+            document.getElementById('prod-price').value = prod.price;
+            document.getElementById('prod-category').value = prod.categoryId;
+            openModal('modal-add-product');
+        };
+
         const saveProduct = () => {
             if (isClient) return showToast('Bu işlem sadece Kasa üzerinden yapılabilir!', 'error');
+            const id = document.getElementById('prod-id').value;
             const name = document.getElementById('prod-name').value.trim();
             const catId = document.getElementById('prod-category').value;
             const price = parseFloat(document.getElementById('prod-price').value);
-            const stock = parseInt(document.getElementById('prod-stock').value);
-            const critical = parseInt(document.getElementById('prod-critical').value);
 
             if(!name || isNaN(price)) return showToast('Eksik bilgi girdiniz!', 'error');
 
-            db.products.push({
-                id: 'p' + Date.now(),
-                name, categoryId: catId, price, stock, critical
-            });
-            
+            if (id) {
+                // Güncelleme: fiyat dahil tüm alanlar güncellenir. Mevcut siparişler
+                // productId üzerinden güncel fiyatı her zaman db.products'tan okur.
+                const prod = db.products.find(p => p.id === id);
+                if (prod) {
+                    prod.name = name;
+                    prod.categoryId = catId;
+                    prod.price = price;
+                }
+                showToast('Ürün güncellendi');
+            } else {
+                db.products.push({
+                    id: 'p' + Date.now(),
+                    name, categoryId: catId, price
+                });
+                showToast('Ürün eklendi');
+            }
+
             saveData();
             closeModal('modal-add-product');
             renderMenuAdmin();
-            showToast('Ürün eklendi');
         };
 
         const deleteProduct = (id) => {
@@ -1221,7 +1164,7 @@
         const renderReports = () => {
             const todayStr = new Date().toLocaleDateString('tr-TR');
             const todaysRecords = db.history.filter(h => new Date(h.date).toLocaleDateString('tr-TR') === todayStr);
-            
+
             let totalCiro = 0, nakit = 0, kart = 0;
             todaysRecords.forEach(r => {
                 totalCiro += r.amount;
@@ -1239,19 +1182,18 @@
 
             const tbody = document.getElementById('report-history-body');
             tbody.innerHTML = '';
-            // En son işlem en üstte
             [...todaysRecords].reverse().forEach(r => {
                 const timeStr = new Date(r.date).toLocaleTimeString('tr-TR', {hour: '2-digit', minute:'2-digit'});
                 tbody.innerHTML += `
                     <tr>
                         <td>${timeStr}</td>
                         <td>${r.table}</td>
-                        <td style="font-weight:bold;">${formatMoney(r.amount)}</td>
-                        <td>${r.method === 'Nakit' ? '💵 Nakit' : '💳 Kart'}</td>
+                        <td style="font-weight:600;">${formatMoney(r.amount)}</td>
+                        <td>${r.method === 'Nakit' ? 'Nakit' : 'Kart'}</td>
                     </tr>
                 `;
             });
-            
+
             if(todaysRecords.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Bugün henüz satış yapılmadı.</td></tr>';
             }
@@ -1275,7 +1217,7 @@
         const importData = () => {
             const fileInput = document.getElementById('import-file');
             if(!fileInput.files.length) return showToast('Lütfen bir dosya seçin!', 'error');
-            
+
             const reader = new FileReader();
             reader.onload = (e) => {
                 try {
@@ -1296,7 +1238,7 @@
         };
 
         const factoryReset = () => {
-            if(confirm('DİKKAT! Tüm masalar, ürünler, stoklar ve gün sonu raporları SİLİNECEK. Devam etmek istiyor musunuz?')) {
+            if(confirm('DİKKAT! Tüm masalar, ürünler ve gün sonu raporları SİLİNECEK. Devam etmek istiyor musunuz?')) {
                 if(confirm('Bu işlem GERİ ALINAMAZ. Son kez onaylıyor musunuz?')) {
                     localStorage.removeItem(STORAGE_KEY);
                     location.reload();
