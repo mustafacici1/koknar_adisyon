@@ -528,6 +528,7 @@
         let isClient = false;
         let hostConnection = null; 
         let clientConnections = []; 
+        let isProcessingClientAction = false;
 
         const generateId = () => 'KOKNAR-' + Math.floor(1000 + Math.random() * 9000);
 
@@ -552,7 +553,7 @@
                 document.getElementById('host-clients-count').innerText = `Bağlı Garson: ${clientConnections.length}`;
                 
                 conn.on('open', () => {
-                    conn.send({ type: 'sync', db: db });
+                    conn.send({ type: 'sync', tables: db.tables, products: db.products });
                 });
 
                 conn.on('data', (data) => {
@@ -580,7 +581,7 @@
             document.getElementById('btn-join').innerText = 'Bağlanıyor...';
 
             peer.on('open', () => {
-                hostConnection = peer.connect(hostId);
+                hostConnection = peer.connect(hostId, { reliable: true });
                 
                 hostConnection.on('open', () => {
                     isClient = true;
@@ -596,7 +597,8 @@
 
                 hostConnection.on('data', (data) => {
                     if (data.type === 'sync') {
-                        db = data.db; 
+                        db.tables = data.tables; 
+                        db.products = data.products;
                         if (document.getElementById('view-tables').classList.contains('active')) renderTables();
                         if (document.getElementById('view-pos').classList.contains('active')) renderPOSOrders();
                     }
@@ -618,27 +620,35 @@
         };
 
         const handleClientAction = (data) => {
+            isProcessingClientAction = true;
+            const originalTableId = activeTableId;
+            activeTableId = data.tableId;
+
             if (data.action === 'addToOrder') {
-                activeTableId = data.tableId;
-                addToOrder(data.productId, true); // true = run locally
+                addToOrder(data.productId, true); 
             } else if (data.action === 'updateOrderQty') {
-                activeTableId = data.tableId;
                 updateOrderQty(data.productId, data.delta, true);
             } else if (data.action === 'cancelOrder') {
-                activeTableId = data.tableId;
                 cancelOrder(true);
             } else if (data.action === 'processPayment') {
-                activeTableId = data.tableId;
                 currentPaymentBasket = data.basket;
                 processPayment(data.method, true);
             }
+            
+            activeTableId = originalTableId;
+            isProcessingClientAction = false;
+            
+            if (document.getElementById('view-tables').classList.contains('active')) renderTables();
+            if (document.getElementById('view-pos').classList.contains('active')) renderPOSOrders();
         };
 
         const broadcastSync = () => {
             if (isHost && clientConnections.length > 0) {
-                const payload = { type: 'sync', db: db };
+                const payload = { type: 'sync', tables: db.tables, products: db.products };
                 clientConnections.forEach(conn => {
-                    if (conn.open) conn.send(payload);
+                    if (conn.open) {
+                        try { conn.send(payload); } catch(e) {}
+                    }
                 });
             }
         };
@@ -770,6 +780,7 @@
         };
 
         const renderTables = () => {
+            if (isProcessingClientAction) return;
             const container = document.getElementById('tables-container');
             container.innerHTML = '';
             
@@ -901,6 +912,7 @@
         };
 
         const renderPOSOrders = () => {
+            if (isProcessingClientAction) return;
             const table = db.tables.find(t => t.id === activeTableId);
             const container = document.getElementById('pos-order-list');
             container.innerHTML = '';
